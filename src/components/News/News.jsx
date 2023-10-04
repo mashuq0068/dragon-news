@@ -1,8 +1,10 @@
+import { Link } from "react-router-dom";
 
 
 const News = () => {
     return (
-        <div className="border-2 border-black col-span-2 h-[550px]">
+        <div className=" shadow-xl hover:shadow-black border-black col-span-2 h-[550px]">
+           <Link to='/readMore'> <button className="btn btn-outline">Read More</button></Link>
             
         </div>
     );
