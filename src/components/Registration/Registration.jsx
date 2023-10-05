@@ -1,7 +1,7 @@
 
 
 import { useContext, useState } from "react";
-import { Link, useNavigate} from "react-router-dom";
+import { Link, useLocation, useNavigate} from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 import {  updateProfile } from "firebase/auth";
 import auth from "../../firebase/firebase.config";
@@ -11,9 +11,11 @@ import auth from "../../firebase/firebase.config";
 const Registration = () => {
     const {registerWithEmailPassword} = useContext(AuthContext)
     const [error , setError] = useState(null)
-    
+    const location = useLocation()
+    const navigate = useNavigate()
+    // const verificationNavigate = useNavigate()
     // const[email , setEmail] = useState(null)
-    const navigate  = useNavigate()
+  
     
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -27,9 +29,10 @@ const Registration = () => {
             updateProfile( auth.currentUser,{
                 displayName:userName
             })
-            if(data.user){
-                navigate('/verification')
-            }
+            navigate(location.state)
+            // if(data.user){
+            //     verificationNavigate('/verification')
+            // }
             
         })
         .catch(error => {

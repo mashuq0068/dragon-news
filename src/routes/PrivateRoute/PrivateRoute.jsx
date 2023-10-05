@@ -1,21 +1,23 @@
 import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import PropTypes from 'prop-types';
-import { Navigate } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 import { FadeLoader } from "react-spinners";
 
 
 const PrivateRoute = ({children}) => {
     const {user , loading} = useContext(AuthContext)
+    const location = useLocation()
+    console.log(location)
     if(user){
         return children
     }
     else if (loading){
 
-     return   <FadeLoader  color="#36d7b7" />
+     return   <FadeLoader color="#36d7b7" />
 
    }
-   return <Navigate to='/login'></Navigate>
+   return <Navigate state={location.pathname} to='/registration'></Navigate>
 };
 
 PrivateRoute.propTypes = {

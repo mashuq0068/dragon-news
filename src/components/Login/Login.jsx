@@ -1,10 +1,12 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 
 
 
 const Login = () => {
+  const location = useLocation()
+  const navigate = useNavigate()
     const {
        
         loginWithEmailPassword,
@@ -21,6 +23,7 @@ const Login = () => {
         loginWithEmailPassword(email , password)
         .then(data => {
             console.log(data.user)
+            navigate(location.state)
         })
         .catch(error => {
             console.error(error.message)

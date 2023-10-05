@@ -17,23 +17,23 @@ const AuthProvider = ({children}) => {
 }
 const loginWithGithub = () =>{
     setLoading(true)
- return   signInWithPopup(auth , githubProvider)
+ return signInWithPopup(auth , githubProvider)
    
 
 }
 const registerWithEmailPassword = (email , password) => {
     setLoading(true)
-return   createUserWithEmailAndPassword(auth , email , password)
+return  createUserWithEmailAndPassword(auth , email , password)
 
 }
 const loginWithEmailPassword = (email , password) => {
     setLoading(true)
- return  signInWithEmailAndPassword(auth , email , password)
+ return signInWithEmailAndPassword(auth , email , password)
 
 }
 const signOutUser = () =>{
     setLoading(true)
-return    signOut(auth)
+return signOut(auth)
 }
 
 useEffect(()=>{
